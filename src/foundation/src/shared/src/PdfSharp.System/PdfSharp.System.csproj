@@ -3,10 +3,18 @@
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<Configurations>Debug;Release;FASTER</Configurations>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)'=='FASTER'">
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\..\..\..\..\SigningKey.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
+	
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Logging" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" />
   </ItemGroup>
+	
 </Project>
