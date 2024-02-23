@@ -51,3 +51,6 @@ InternalAgentState.json
 /nuget.config
 *.log
 *tempfile.*
+
+# Signing key
+SigningKey.snk

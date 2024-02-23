@@ -1,49 +1,51 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <OutputType>library</OutputType>
-        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>11.0</LangVersion>
-        <RootNamespace>PdfSharp</RootNamespace>
-        <DefineConstants>CORE</DefineConstants>
-    </PropertyGroup>
+	<PropertyGroup>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<WarningLevel>0</WarningLevel>
+		<Configurations>Debug;Release;FASTER</Configurations>
+		<Platforms>AnyCPU;x64</Platforms>
+	</PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)' != 'FASTER'">
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<DefineConstants>CORE</DefineConstants>
+	</PropertyGroup>
+	
+	<PropertyGroup Condition="'$(Configuration)' == 'FASTER'">
+		<TargetFrameworks>net8.0-windows</TargetFrameworks>
+		<UseWindowsForms>true</UseWindowsForms>
+		<DefineConstants>GDI</DefineConstants>
+		<SignAssembly>true</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\..\..\..\..\..\SigningKey.snk</AssemblyOriginatorKeyFile>
+	</PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-      <WarningLevel>0</WarningLevel>
-    </PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Forms\**" />
+		<Compile Remove="Windows\**" />
+		<EmbeddedResource Remove="Forms\**" />
+		<EmbeddedResource Remove="Windows\**" />
+		<None Remove="Forms\**" />
+		<None Remove="Windows\**" />
+	</ItemGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-      <WarningLevel>0</WarningLevel>
-    </PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\shared\src\PdfSharp.System\PdfSharp.System.csproj" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <Compile Remove="Forms\**" />
-        <Compile Remove="Windows\**" />
-        <EmbeddedResource Remove="Forms\**" />
-        <EmbeddedResource Remove="Windows\**" />
-        <None Remove="Forms\**" />
-        <None Remove="Windows\**" />
-    </ItemGroup>
+	<ItemGroup Condition="'$(Configuration)' != 'FASTER'">
+		<InternalsVisibleTo Include="$(AssemblyName).Tests" />
+		<InternalsVisibleTo Include="PdfSharp.UA" />
+		<InternalsVisibleTo Include="PdfSharp.UA-wpf" />
+	</ItemGroup>
 
-    <ItemGroup>
-        <ProjectReference Include="..\..\..\shared\src\PdfSharp.System\PdfSharp.System.csproj" />
-    </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Messages.de.restext" />
+		<None Remove="Resources\Messages.restext" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <InternalsVisibleTo Include="$(AssemblyName).Tests" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="Resources\Messages.de.restext" />
-    <None Remove="Resources\Messages.restext" />
-  </ItemGroup>
-
-    <ItemGroup>
-        <EmbeddedResource Include="Resources\Messages.de.restext" />
-        <EmbeddedResource Include="Resources\Messages.restext" />
-    </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Include="Resources\Messages.de.restext" />
+		<EmbeddedResource Include="Resources\Messages.restext" />
+	</ItemGroup>
 
 </Project>

@@ -30,10 +30,10 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(NetCore_PackageVersion)" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(NetCore_PackageVersion)" />
     <PackageVersion Include="System.Collections.Immutable" Version="$(NetCore_PackageVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging" Version="$(NetCore_PackageVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="$(NetCore_PackageVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Configuration" Version="$(NetCore_PackageVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="$(NetCore_PackageVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Console" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="$(NetCore_PackageVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="$(NetCore_PackageVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="$(NetCore_PackageVersion)" />
