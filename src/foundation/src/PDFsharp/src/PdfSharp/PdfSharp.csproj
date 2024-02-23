@@ -1,23 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <OutputType>library</OutputType>
-        <TargetFrameworks>net6.0;netstandard2.0</TargetFrameworks>
-        <LangVersion>11.0</LangVersion>
-        <RootNamespace>PdfSharp</RootNamespace>
+        <TargetFrameworks>net8.0</TargetFrameworks>
         <DefineConstants>CORE</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-      <WarningLevel>0</WarningLevel>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-      <WarningLevel>0</WarningLevel>
-    </PropertyGroup>
+			<WarningLevel>0</WarningLevel>
+		</PropertyGroup>
 
     <ItemGroup>
         <Compile Remove="Forms\**" />
@@ -41,9 +28,9 @@
     <None Remove="Resources\Messages.restext" />
   </ItemGroup>
 
-    <ItemGroup>
-        <EmbeddedResource Include="Resources\Messages.de.restext" />
-        <EmbeddedResource Include="Resources\Messages.restext" />
-    </ItemGroup>
+  <ItemGroup>
+      <EmbeddedResource Include="Resources\Messages.de.restext" />
+      <EmbeddedResource Include="Resources\Messages.restext" />
+  </ItemGroup>
 
 </Project>
